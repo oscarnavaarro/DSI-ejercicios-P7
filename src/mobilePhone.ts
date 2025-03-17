@@ -1,4 +1,4 @@
-import { Observer } from "./weatherStation.js";
+import { Observer, Observable, weatherStation } from "./weatherStation.js";
 
 /**
  * Representa un teléfono móvil que actúa como observador en el patrón Observer.
@@ -8,7 +8,7 @@ export class mobilePhone implements Observer {
   private name: string;
 
   /**
-   * Crea una instancia de mobilePhone.
+   * Crea una instancia de MobilePhone.
    * @param name - El nombre del teléfono móvil.
    */
   constructor(name: string) {
@@ -16,12 +16,21 @@ export class mobilePhone implements Observer {
   }
 
   /**
-   * Updates the mobile phone with a weather event.
-   * Actualiza el teléfono móvil con un evento meteorológico.
-   * @param event - El evento meteorológico con el que actualizar el teléfono.
-   * @returns String que indica que el móvil ha recibido la actualización meteorológica.
+   * Actualiza el teléfono móvil con la información del observable.
+   * @param observable - El objeto observable (estación meteorológica).
    */
-  update(event: string): string {
-    return `[${this.name}] Mobile Phone received weather update: ${event}`;
+  update(observable: Observable): void {
+    if (observable instanceof weatherStation) {
+      const temperature = observable.getTemperature();
+      const stormDistance = observable.getStormDistance();
+
+      if (temperature !== null) {
+        console.log(`[${this.name}] Mobile Phone: Temperature update - ${temperature}°C`);
+      } else if (stormDistance !== null) {
+        console.log(`[${this.name}] Mobile Phone: Storm alert - Distance: ${stormDistance} km`);
+      } else {
+        console.log(`[${this.name}] Mobile Phone: No updates available`);
+      }
+    }
   }
 }

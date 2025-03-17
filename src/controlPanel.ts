@@ -1,4 +1,4 @@
-import { Observer } from "./weatherStation.js";
+import { Observer, Observable, weatherStation } from "./weatherStation.js";
 
 /**
  * Representa un panel de control que observa actualizaciones meteorológicas.
@@ -7,7 +7,7 @@ export class controlPanel implements Observer {
   private name: string;
 
   /**
-   * Crea una instancia de controlPanel.
+   * Crea una instancia de ControlPanel.
    * @param name - El nombre del panel de control.
    */
   constructor(name: string) {
@@ -15,11 +15,21 @@ export class controlPanel implements Observer {
   }
 
   /**
-   * Actualiza el panel de control con una actualización meteorológica.
-   * @param event - El evento meteorológico a actualizar.
-   * @returns Una string indicando que el panel ha recibido la actualización meteorológica.
+   * Actualiza el panel de control con la información del observable.
+   * @param observable - El objeto observable (estación meteorológica).
    */
-  update(event: string): string {
-    return `[${this.name}] Control Panel received weather update: ${event}`;
+  update(observable: Observable): void {
+    if (observable instanceof weatherStation) {
+      const temperature = observable.getTemperature();
+      const stormDistance = observable.getStormDistance();
+
+      if (temperature !== null) {
+        console.log(`[${this.name}] Control Panel: Temperature update - ${temperature}°C`);
+      } else if (stormDistance !== null) {
+        console.log(`[${this.name}] Control Panel: Storm alert - Distance: ${stormDistance} km`);
+      } else {
+        console.log(`[${this.name}] Control Panel: No updates available`);
+      }
+    }
   }
 }
