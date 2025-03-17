@@ -1,0 +1,41 @@
+{
+  "name": "dsi-ejercicios-p7",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "ej1": "tsc && node dist/ejercicio-1.js && vitest run ejercicio-1.spec.ts",
+    "ej2": "tsc && node dist/ejercicio-2.js && vitest run ejercicio-2.spec.ts",
+    "ej3": "tsc && node dist/ejercicio-3.js && vitest run ejercicio-3.spec.ts",
+    "ej4": "tsc && node dist/ejercicio-4.js && vitest run ejercicio-4.spec.ts",
+    "ej5": "tsc && node dist/ejercicio-5.js && vitest run ejercicio-5.spec.ts",
+    "ej6": "tsc && node dist/ejercicio-6.js && vitest run ejercicio-6.spec.ts",
+    "doc": "typedoc",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage --coverage.include src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscarnavaarro/DSI-ejercicios-P7.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oscarnavaarro/DSI-ejercicios-P7/issues"
+  },
+  "homepage": "https://github.com/oscarnavaarro/DSI-ejercicios-P7#readme",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-tsdoc": "^0.4.0",
+    "globals": "^16.0.0",
+    "prettier": "^3.5.3",
+    "tsc-watch": "^6.2.1",
+    "typedoc": "^0.28.0",
+    "typescript-eslint": "^8.26.1",
+    "vitest": "^3.0.8"
+  }
+}
